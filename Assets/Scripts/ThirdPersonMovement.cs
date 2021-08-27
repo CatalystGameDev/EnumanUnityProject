@@ -6,8 +6,9 @@ public class ThirdPersonMovement : MonoBehaviour
 {
 
     public Camera cam;
-    public float speed = 5f;
-    InputManager inputManager;
+    public float speed = 6f;
+    public GameObject bomb;
+    public InputManager inputManager;
     CharacterController characterController;
     Animator animatorNick;
     public CameraManager cameraManager;
@@ -17,7 +18,9 @@ public class ThirdPersonMovement : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        inputManager = FindObjectOfType<InputManager>();
+        
+
+        // inputManager = FindObjectOfType<InputManager>();
         characterController = GetComponent<CharacterController>();
         animatorNick = GetComponent<Animator>();
         cameraObject = Camera.main.transform;
@@ -26,6 +29,14 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inputManager.placeBomb)
+        {
+            Vector3 bombTargetPosition = transform.position;
+            bombTargetPosition.y = bombTargetPosition.y + 0.5f;
+            Instantiate(bomb, bombTargetPosition, transform.rotation);
+            Debug.Log(inputManager.placeBomb);
+        }
+
         Vector3 movement = new Vector3(inputManager.horizontalMovement, 0, inputManager.verticalMovement);
 
         if (inputManager.horizontalMovement > 0 || inputManager.verticalMovement > 0)
@@ -52,7 +63,7 @@ public class ThirdPersonMovement : MonoBehaviour
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         transform.rotation = playerRotation;
 
-        Vector3  rotatedMovement = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y , 0) * movement ;
+        Vector3 rotatedMovement = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0) * movement;
 
         characterController.Move(rotatedMovement * speed * Time.deltaTime);
     }

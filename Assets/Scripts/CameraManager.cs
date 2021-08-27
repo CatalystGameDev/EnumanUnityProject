@@ -21,8 +21,8 @@ public class CameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
         targetTransform = FindObjectOfType<ThirdPersonMovement>().transform;
         inputManager = FindObjectOfType<InputManager>();
     }
