@@ -19538,6 +19538,8 @@ GameObject:
   - component: {fileID: 7011011894266314638}
   - component: {fileID: 7011011894266314635}
   - component: {fileID: 7011011894266314632}
+  - component: {fileID: 6093593809516510643}
+  - component: {fileID: 1880391179409845835}
   m_Layer: 0
   m_Name: bomb
   m_TagString: Untagged
@@ -19609,6 +19611,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &6093593809516510643
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011011894266314639}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1880391179409845835
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011011894266314639}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f601e89ece04c354395dcad744956aa5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7011011895612658016
 GameObject:
   m_ObjectHideFlags: 0
@@ -19651,9 +19685,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7011011895612658016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6f64986f5c301d40bff042a904ed18a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d4a5ee7d12b6ac4b94eb02988d44f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Mon: {fileID: 0}
+  radius: 5
+  power: 5
+  upForce: 1
 --- !u!1 &7011011896033394873
 GameObject:
   m_ObjectHideFlags: 0
