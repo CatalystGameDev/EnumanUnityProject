@@ -14,11 +14,12 @@ public class ThirdPersonMovement : MonoBehaviour
     public CameraManager cameraManager;
     Transform cameraObject;
 
+    public float bombCounter = 3;
     public float rotationSpeed = 15;
     // Start is called before the first frame update
     void Awake()
     {
-        
+
 
         // inputManager = FindObjectOfType<InputManager>();
         characterController = GetComponent<CharacterController>();
@@ -31,13 +32,14 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (inputManager.placeBomb)
         {
-            Vector3 bombTargetPosition = transform.position;
-            bombTargetPosition.y = bombTargetPosition.y + 0.5f;
-            Instantiate(bomb, bombTargetPosition, transform.rotation);
-            Debug.Log(inputManager.placeBomb);
+            if (bombCounter > 0)
+            {
+                --bombCounter;
+                Vector3 bombTargetPosition = transform.position;
+                bombTargetPosition.y = bombTargetPosition.y + 0.5f;
+                Instantiate(bomb, bombTargetPosition, transform.rotation);
+            }
         }
-
-        Vector3 movement = new Vector3(inputManager.horizontalMovement, 0, inputManager.verticalMovement);
 
         if (inputManager.horizontalMovement > 0 || inputManager.verticalMovement > 0)
         {
@@ -63,8 +65,12 @@ public class ThirdPersonMovement : MonoBehaviour
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         transform.rotation = playerRotation;
 
-        Vector3 rotatedMovement = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0) * movement;
+        //For Character Controller component
+        // Vector3 movement = new Vector3(inputManager.horizontalMovement, -1, inputManager.verticalMovement);
+        // Vector3 rotatedMovement = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0) * movement;
+        // characterController.Move(rotatedMovement * speed * Time.deltaTime);
 
-        characterController.Move(rotatedMovement * speed * Time.deltaTime);
+        transform.Translate(new Vector3(inputManager.horizontalMovement, 0, inputManager.verticalMovement) * speed * Time.deltaTime);
+        // transform.Rotate(new Vector3(0,0,0));
     }
 }

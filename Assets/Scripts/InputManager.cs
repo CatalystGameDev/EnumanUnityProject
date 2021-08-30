@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
         // }else if(Input.GetButtonUp("Place Bomb")){
         //     placeBomb = false;
         // }
-        placeBomb = Input.GetButtonUp("Place Bomb");
+        placeBomb = Input.GetButtonDown("Place Bomb");
     }
 
 
