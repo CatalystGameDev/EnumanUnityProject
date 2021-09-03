@@ -12,14 +12,17 @@ public class BombExploision : MonoBehaviour
     public float power = 5f;
     public float upForce = 1f;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Mon = GameObject.Find("Mon");
         thirdPersonMovement = Mon.GetComponent<ThirdPersonMovement>();
         explosionParticle = this.transform.Find("explosion").gameObject;
         bomb = this.transform.Find("bomb").gameObject;
         Invoke("HandleExplosion", 2);
+        Physics.IgnoreCollision(Mon.GetComponent<Collider>(), GetComponent<Collider>());
     }
+
+
     private void HandleExplosion()
     {
 

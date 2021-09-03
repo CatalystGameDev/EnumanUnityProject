@@ -19538,7 +19538,6 @@ GameObject:
   - component: {fileID: 7011011894266314638}
   - component: {fileID: 7011011894266314635}
   - component: {fileID: 7011011894266314632}
-  - component: {fileID: 6093593809516510643}
   - component: {fileID: 1880391179409845835}
   m_Layer: 0
   m_Name: bomb
@@ -19611,19 +19610,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6093593809516510643
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7011011894266314639}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1880391179409845835
 Animator:
   serializedVersion: 3
@@ -19653,6 +19639,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7011011895612658019}
   - component: {fileID: 7011011895612658018}
+  - component: {fileID: 1657243462007818607}
+  - component: {fileID: -6774039914188972835}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -19690,8 +19678,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mon: {fileID: 0}
   radius: 5
-  power: 5
+  power: 10
   upForce: 1
+--- !u!54 &1657243462007818607
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011011895612658016}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!135 &-6774039914188972835
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011011895612658016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.27
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7011011896033394873
 GameObject:
   m_ObjectHideFlags: 0
@@ -19703,7 +19720,6 @@ GameObject:
   - component: {fileID: 7011011896033394872}
   - component: {fileID: 7011011896033394821}
   - component: {fileID: 7011011896033394874}
-  - component: {fileID: 7011011896033394875}
   m_Layer: 0
   m_Name: bomb_rope_fire
   m_TagString: Untagged
@@ -19774,19 +19790,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7011011896033394875
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7011011896033394873}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7011011896284450743
 GameObject:
   m_ObjectHideFlags: 0
@@ -19798,7 +19801,6 @@ GameObject:
   - component: {fileID: 7011011896284450742}
   - component: {fileID: 7011011896284450739}
   - component: {fileID: 7011011896284450736}
-  - component: {fileID: 7011011896284450737}
   m_Layer: 0
   m_Name: bomb_rope
   m_TagString: Untagged
@@ -19870,20 +19872,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7011011896284450737
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7011011896284450743}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7356693930950334565
 GameObject:
   m_ObjectHideFlags: 0

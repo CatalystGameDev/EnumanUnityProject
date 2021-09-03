@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     public float cameraY;
 
     public bool placeBomb;
+    public bool jump;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,12 +25,8 @@ public class InputManager : MonoBehaviour
         verticalMovement = Input.GetAxisRaw("Vertical");
         cameraX = Input.GetAxisRaw("Mouse X");
         cameraY = Input.GetAxisRaw("Mouse Y");
-        // if(Input.GetButtonDown("Place Bomb") && placeBomb == false){
-            
-        // }else if(Input.GetButtonUp("Place Bomb")){
-        //     placeBomb = false;
-        // }
-        placeBomb = Input.GetButtonDown("Place Bomb");
+        placeBomb = Input.GetButtonDown("Fire1");
+        jump = Input.GetButtonDown("Jump");
     }
 
 
