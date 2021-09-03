@@ -35,7 +35,6 @@ public class CameraManager : MonoBehaviour
 
         transform.position = targetPosition;
 
-
         lookAngle = lookAngle + (inputManager.cameraX * cameraLookSpeed);
         pivotAngle = pivotAngle - (inputManager.cameraY * cameraPivotSpeed);
         pivotAngle = Mathf.Clamp(pivotAngle, minimumPivotAngle, maximumPivotAngle);

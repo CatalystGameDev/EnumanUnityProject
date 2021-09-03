@@ -12,18 +12,21 @@ public class PowerUp : MonoBehaviour
         thirdPersonMovement = Mon.GetComponent<ThirdPersonMovement>();
 
         powerUpRenderer = GetComponent<Renderer>();
-
     }
 
-    // Start is called before the first frame update
    private void OnTriggerEnter(Collider other) {
-       if(other.tag == "Player"){
+       // Bomb Power Up
+       if(other.tag == "Player" && this.name == "Add_Bomb_Power_Up"){
            ++thirdPersonMovement.bombCounter;
-           Destroy(this.gameObject);  
-
+           Destroy(gameObject);  
+       }else if(other.tag == "Player" && this.name == "Add_Health_Power_Up"){
+           ++thirdPersonMovement.healthCounter;
+           Destroy(gameObject); 
+       }else if(other.tag == "Player" && this.name == "Add_Speed_Power_Up"){
+           thirdPersonMovement.speedCounter += 5;
+           Destroy(gameObject); 
        }
    }
-
     // Update is called once per frame
     void Update()
     {
