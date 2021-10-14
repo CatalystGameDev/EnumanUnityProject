@@ -10,13 +10,16 @@ public class InputManager : MonoBehaviour
     public float cameraX;
     public float cameraY;
 
+    GameMenu gameMenu;
     public bool placeBomb;
     public bool jump;
-    
+
+    public bool pause;
+
     // Start is called before the first frame update
     void Awake()
     {
-
+        gameMenu = GameObject.Find("GameMenu").GetComponent<GameMenu>();
     }
 
     private void Update()
@@ -27,7 +30,6 @@ public class InputManager : MonoBehaviour
         cameraY = Input.GetAxisRaw("Mouse Y");
         placeBomb = Input.GetButtonDown("Fire1");
         jump = Input.GetButtonDown("Jump");
+        if (Input.GetButtonDown("Cancel")) gameMenu.HandlePauseScreen();
     }
-
-
 }
