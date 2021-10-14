@@ -5,31 +5,32 @@ using UnityEngine;
 public class ThirdPersonMovement : MonoBehaviour
 {
     public Transform spawnPoint;
+    GameMenu gameMenu;
     public Camera cam;
     public float speedCounter = 6f;
     public GameObject bomb;
     public InputManager inputManager;
     CharacterController characterController;
-    Animator animatorNick;
+    Animator animator;
     public CameraManager cameraManager;
     Transform cameraObject;
     Rigidbody playerRigidBody;
-    public float healthCounter = 5;
+    public float healthCounter = 1;
     public float bombCounter = 3;
     public float rotationSpeed = 15;
     public float jumpForce = 7;
-
-    private Canvas gameOverscreen;
+    
+    
     public bool isJumping;
 
     void Awake()
     {
         // Cursor.lockState = CursorLockMode.Locked;
-        gameOverscreen = GameObject.Find("GameOver").GetComponent<Canvas>();
+        gameMenu = GameObject.Find("GameMenu").GetComponent<GameMenu>();
         spawnPoint = GameObject.Find("SpawnPoint").GetComponent<Transform>();
         playerRigidBody = GetComponent<Rigidbody>();
         characterController = GetComponent<CharacterController>();
-        animatorNick = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         cameraObject = Camera.main.transform;
     }
 
@@ -39,7 +40,10 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.gameObject.tag == "Damage") --healthCounter;
 
         //Check if player falls off the map
-        if (other.gameObject.tag == "OutOfBounds") OnPlayerDeath();
+        if (other.gameObject.tag == "OutOfBounds") gameMenu.GameOver();
+
+        //Check if player falls off the map
+        if (other.gameObject.tag == "Objective") gameMenu.StageComplete();
     }
 
     private void OnCollisionEnter(Collision other) {
@@ -50,7 +54,7 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
         //if player dies or fall off the map
-        if (healthCounter <= 0) OnPlayerDeath();
+        if (healthCounter <= 0) gameMenu.GameOver();
 
         //Player Movements WASD
         PlayerMovement();
@@ -109,16 +113,11 @@ public class ThirdPersonMovement : MonoBehaviour
         // if moving walk animation will play, else animation will stop
         if (inputManager.horizontalMovement > 0 || inputManager.verticalMovement > 0)
         {
-            animatorNick.SetBool("walk", true);
+            animator.SetBool("walk", true);
         }
         else
         {
-            animatorNick.SetBool("walk", false);
+            animator.SetBool("walk", false);
         }
-    }
-
-    private void OnPlayerDeath()
-    {
-        gameOverscreen.enabled = true;
     }
 }
